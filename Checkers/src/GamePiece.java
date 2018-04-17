@@ -13,6 +13,12 @@ public class GamePiece {
 		
 	}
 	
+	public void setColour(Colour colour) {
+		
+		this.colour = colour;
+		
+	}
+	
 	public static String getColour() {
 		
 		switch (colour) {
