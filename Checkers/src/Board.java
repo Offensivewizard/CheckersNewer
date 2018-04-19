@@ -6,7 +6,6 @@ public class Board {
 	public Board() {
 
 		board = new GamePiece[8][8];
-
 		for (int i = 0; i < 3; i += 2) {
 
 			for (int t = 0; t < 8; t += 2) {

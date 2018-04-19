@@ -1,7 +1,7 @@
 
 public class GamePiece {
 	
-	private static Colour colour;
+	private Colour colour;
 	private static boolean king;
 	private static String colourString;
 	
