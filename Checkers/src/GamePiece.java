@@ -19,7 +19,7 @@ public class GamePiece {
 		
 	}
 	
-	public String getColour() {
+	public String printColour() {
 		
 		switch (colour) {
 		case RED: colourString = "R";
@@ -31,6 +31,12 @@ public class GamePiece {
 		}
 		
 		return colourString;
+		
+	}
+	
+	public Colour getColour() {
+		
+		return colour;
 		
 	}
 	

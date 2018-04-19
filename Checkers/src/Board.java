@@ -55,9 +55,20 @@ public class Board {
 	public void display() {
 		for (int j = 0; j < 8; j++) {
 			for (int g = 0; g < 8; g++) {
-				System.out.print(board[j][g].getColour() + " ");
+				System.out.print(board[j][g].printColour() + " ");
 			}
 			System.out.println();
 		}
+		System.out.println("--------------");
+	}
+	
+	public void movePiece(int y1, int x1, int y2, int x2){
+		
+		Colour oColour = board[y1][x1].getColour();
+		
+		board[y1][x1].setColour(Colour.EMPTY);
+		board[y2][x2].setColour(oColour);
+		
+		
 	}
 }
