@@ -19,12 +19,15 @@ public class GamePiece {
 		
 	}
 	
-	public static String getColour() {
+	public String getColour() {
 		
 		switch (colour) {
-		case RED: colourString = "r";
+		case RED: colourString = "R";
 		break;
-		case BLACK: colourString = "b";
+		case BLACK: colourString = "B";
+		break;
+		case EMPTY: colourString = "E";
+		break;
 		}
 		
 		return colourString;
