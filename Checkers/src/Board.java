@@ -53,7 +53,13 @@ public class Board {
 			board[6][i] = new GamePiece(Colour.RED);
 		}
 	}
-
+	
+	public void instaWin() {
+		
+		redPiece = 0;
+		
+	}
+	
 	public void display() {
 		for (int j = 0; j < 8; j++) {
 
@@ -74,88 +80,78 @@ public class Board {
 	public void movePiece(int y1, int x1, int y2, int x2, boolean currentTurn) {
 
 		boolean isKing = false;
-		// The move only takes place if the validateMove method returns true.
-		if (validateMove(y1, x1, y2, x2, currentTurn)) {
-			// Get the colour of the original piece.
-			Colour oColour = board[y1][x1].getColour();
-			// Check if the original piece was a king or not.
-			if (board[y1][x1].checkKing() == true) {
+		// Get the colour of the original piece.
+		Colour oColour = board[y1][x1].getColour();
+		// Check if the original piece was a king or not.
+		if (board[y1][x1].checkKing() == true) {
 
-				isKing = true;
-
-			}
-			// Make the piece's previous place empty, and make the new one the
-			// original colour.
-			board[y1][x1].setColour(Colour.EMPTY);
-
-			board[y2][x2].setColour(oColour);
-			// For when the piece jumps over another piece.
-			if (Math.abs(x1 - x2) == 2) {
-				// If the piece is moving to the left.
-				if (x1 > x2) {
-					// If the piece is moving up the board from red's
-					// perspective.
-					if (y1 > y2) {
-						// Removing the piece from the board completely.
-						board[y1 - 1][x1 - 1].setColour(Colour.EMPTY);
-						board[y1 - 1][x1 - 1].removeKing();
-
-					}
-					// If the piece is moving down.
-					else {
-
-						board[y1 + 1][x1 - 1].setColour(Colour.EMPTY);
-						board[y1 + 1][x1 - 1].removeKing();
-
-					}
-
-				}
-				// If the piece is moving to the right.
-				else {
-					// If the piece is moving up.
-					if (y1 > y2) {
-
-						board[y1 - 1][x1 + 1].setColour(Colour.EMPTY);
-						board[y1 - 1][x1 + 1].removeKing();
-
-					}
-					// If the piece is moving down.
-					else {
-
-						board[y1 + 1][x1 + 1].setColour(Colour.EMPTY);
-						board[y1 + 1][x1 + 1].removeKing();
-
-					}
-
-				}
-				// If red takes a piece, then remove 1 from the blackPiece
-				// count.
-				if (currentTurn == true) {
-
-					blackPiece--;
-
-				}
-				// If black takes a piece, then remove 1 from the redPiece
-				// count.
-				else {
-
-					redPiece--;
-
-				}
-			}
-
-			if (isKing == true) {
-
-				board[y2][x2].makeKing();
-				board[y1][x1].removeKing();
-
-			}
+			isKing = true;
 
 		}
+		// Make the piece's previous place empty, and make the new one the
+		// original colour.
+		board[y1][x1].setColour(Colour.EMPTY);
 
-		else {
+		board[y2][x2].setColour(oColour);
+		// For when the piece jumps over another piece.
+		if (Math.abs(x1 - x2) == 2) {
+			// If the piece is moving to the left.
+			if (x1 > x2) {
+				// If the piece is moving up the board from red's
+				// perspective.
+				if (y1 > y2) {
+					// Removing the piece from the board completely.
+					board[y1 - 1][x1 - 1].setColour(Colour.EMPTY);
+					board[y1 - 1][x1 - 1].removeKing();
 
-			System.out.println("Invalid move, try again.\n");
+				}
+				// If the piece is moving down.
+				else {
+
+					board[y1 + 1][x1 - 1].setColour(Colour.EMPTY);
+					board[y1 + 1][x1 - 1].removeKing();
+
+				}
+
+			}
+			// If the piece is moving to the right.
+			else {
+				// If the piece is moving up.
+				if (y1 > y2) {
+
+					board[y1 - 1][x1 + 1].setColour(Colour.EMPTY);
+					board[y1 - 1][x1 + 1].removeKing();
+
+				}
+				// If the piece is moving down.
+				else {
+
+					board[y1 + 1][x1 + 1].setColour(Colour.EMPTY);
+					board[y1 + 1][x1 + 1].removeKing();
+
+				}
+
+			}
+			// If red takes a piece, then remove 1 from the blackPiece
+			// count.
+			if (currentTurn == true) {
+
+				blackPiece--;
+
+			}
+			// If black takes a piece, then remove 1 from the redPiece
+			// count.
+			else {
+
+				redPiece--;
+
+			}
+		}
+
+		if (isKing == true) {
+
+			board[y2][x2].makeKing();
+			board[y1][x1].removeKing();
 
 		}
 
@@ -362,5 +358,22 @@ public class Board {
 
 		return false;
 
+	}
+
+	public String checkWinner() {
+		
+		if (redPiece == 0) {
+			
+			return "Black";
+			
+		}
+		
+		else {
+			
+			return "Red";
+			
+		}
+		
+		
 	}
 }
