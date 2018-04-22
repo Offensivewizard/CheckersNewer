@@ -66,7 +66,6 @@ public class Driver {
 				break;
 
 			}
-			gameBoard.instaWin();
 
 		}
 
