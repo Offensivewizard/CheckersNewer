@@ -81,7 +81,7 @@ public class Board {
 
 		boolean isKing = false;
 		// Get the colour of the original piece.
-		Colour oColour = board[y1][x1].getColour();
+		Colour oColour = board[y1	][x1].getColour();
 		// Check if the original piece was a king or not.
 		if (board[y1][x1].checkKing() == true) {
 
@@ -146,6 +146,9 @@ public class Board {
 				redPiece--;
 
 			}
+			
+		 
+			
 		}
 
 		if (isKing == true) {
