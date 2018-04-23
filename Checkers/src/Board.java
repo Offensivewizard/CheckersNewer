@@ -155,6 +155,7 @@ public class Board {
 
 		}
 
+		king(y2, x2, currentTurn);
 
 	}
 
@@ -374,6 +375,24 @@ public class Board {
 		else {
 
 			return "Red";
+
+		}
+
+	}
+
+	public void king(int y, int x, boolean currentTurn) {
+
+		if (board[y][x].getColour().equals(Colour.RED) && y == 0) {
+
+			board[y][x].makeKing();
+			System.out.println("Made red piece a king.");
+
+		}
+
+		else if (board[y][x].getColour().equals(Colour.BLACK) && y == 7) {
+
+			board[y][x].makeKing();
+			System.out.println("Made black piece a king.");
 
 		}
 
