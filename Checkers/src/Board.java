@@ -53,13 +53,13 @@ public class Board {
 			board[6][i] = new GamePiece(Colour.RED);
 		}
 	}
-	
+
 	public void instaWin() {
-		
+
 		redPiece = 0;
-		
+
 	}
-	
+
 	public void display() {
 		for (int j = 0; j < 8; j++) {
 
@@ -158,6 +158,8 @@ public class Board {
 
 		}
 
+		king(y2, x2, currentTurn);
+
 	}
 
 	public boolean checkOver() {
@@ -180,8 +182,10 @@ public class Board {
 
 		// Checks if the move is within the range of the board.
 		if (x1 >= 0 && x1 <= 7 && y1 >= 0 && y1 <= 7 && x2 >= 0 && x2 <= 7 && y2 >= 0 && y2 <= 7) {
-			// Check if the piece is actually moving diagonally.
-			if (Math.abs(x1 - x2) >= 1) {
+			// Check if the piece is actually moving diagonally, and moving no
+			// more than
+			// one space to the left or right.
+			if (Math.abs(x1 - x2) >= 1 && Math.abs(x1 - x2) <= 2) {
 				// Check if either the old space or the new space is empty.
 				if (board[y2][x2].getColour().equals(Colour.EMPTY) && !board[y1][x1].getColour().equals(Colour.EMPTY)) {
 					// Check whether the current turn corresponds to the piece
@@ -224,7 +228,7 @@ public class Board {
 
 								}
 								// If the piece is moving to the left.
-								else if (x2 > x1) {
+								else if (x1 > x2) {
 
 									if (board[y1 - 1][x1 - 1].getColour().equals(Colour.BLACK)) {
 
@@ -364,19 +368,37 @@ public class Board {
 	}
 
 	public String checkWinner() {
-		
+
 		if (redPiece == 0) {
-			
+
 			return "Black";
-			
+
 		}
-		
+
 		else {
-			
+
 			return "Red";
-			
+
 		}
-		
-		
+
 	}
+
+	public void king(int y, int x, boolean currentTurn) {
+
+		if (board[y][x].getColour().equals(Colour.RED) && y == 0) {
+
+			board[y][x].makeKing();
+			System.out.println("Made red piece a king.");
+
+		}
+
+		else if (board[y][x].getColour().equals(Colour.BLACK) && y == 7) {
+
+			board[y][x].makeKing();
+			System.out.println("Made black piece a king.");
+
+		}
+
+	}
+
 }

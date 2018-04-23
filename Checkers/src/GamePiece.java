@@ -2,7 +2,7 @@
 public class GamePiece {
 
 	private Colour colour;
-	private static boolean king;
+	private boolean king;
 	private static String colourString;
 
 	public GamePiece(Colour colour) {
