@@ -376,4 +376,21 @@ public class Board {
 		
 		
 	}
+	
+	public void king(int y, int x, boolean currentTurn) {
+		
+		if (board[y][x].getColour().equals(Colour.RED) && y == 0) {
+			
+			board[y][x].makeKing();
+			
+		}
+		
+		else if (board[y][x].getColour().equals(Colour.BLACK) && y == 7) {
+			
+			board[y][x].makeKing();
+			
+		}
+		
+	}
+	
 }
