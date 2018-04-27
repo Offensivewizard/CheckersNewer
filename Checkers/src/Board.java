@@ -205,7 +205,7 @@ public class Board {
 							// This if statement catches if the move is a simple
 							// one
 							// space move.
-							if (Math.abs(y2 - y1) == 1) {
+							if (Math.abs(y2 - y1) == 1 && Math.abs(x2-x1) == 1) {
 
 								return true;
 
@@ -249,7 +249,7 @@ public class Board {
 						// other if statement.
 						else if (y2 > y1 && board[y1][x1].checkKing() == true) {
 
-							if (Math.abs(y2 - y1) == 1) {
+							if (Math.abs(y2 - y1) == 1 && Math.abs(x2-x1) == 1) {
 
 								return true;
 
@@ -293,7 +293,7 @@ public class Board {
 						// of up.
 						if (y2 < y1 && board[y1][x1].checkKing() == true) {
 
-							if (Math.abs(y2 - y1) == 1) {
+							if (Math.abs(y2 - y1) == 1 && Math.abs(x2-x1) == 1) {
 
 								return true;
 
@@ -325,7 +325,7 @@ public class Board {
 
 						else if (y2 > y1) {
 
-							if (Math.abs(y2 - y1) == 1) {
+							if (Math.abs(y2 - y1) == 1 && Math.abs(x2-x1) == 1) {
 
 								return true;
 
