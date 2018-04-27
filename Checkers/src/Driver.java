@@ -6,6 +6,7 @@ public class Driver {
 
 		boolean currentTurn = false;
 		Board gameBoard = new Board();
+		AI ai = new AI();
 		Scanner in = new Scanner(System.in);
 		int[] coord = new int[4];
 
@@ -43,22 +44,10 @@ public class Driver {
 			currentTurn = true;
 			gameBoard.display();
 			System.out.println("Red checkers, it's your turn! Input your coordinates in order:");
-			coord[0] = in.nextInt();
-			coord[1] = in.nextInt();
-			coord[2] = in.nextInt();
-			coord[3] = in.nextInt();
+			int aicoords[] = ai.getAIMove();
 
-			while (!gameBoard.validateMove(coord[0], coord[1], coord[2], coord[3], currentTurn)) {
-				gameBoard.display();
-				System.out.println("Invalid coordinates, try again. Input your coordinates in order:");
-				coord[0] = in.nextInt();
-				coord[1] = in.nextInt();
-				coord[2] = in.nextInt();
-				coord[3] = in.nextInt();
 
-			}
-
-			gameBoard.movePiece(coord[0], coord[1], coord[2], coord[3], currentTurn);
+			gameBoard.movePiece(aicoords[0], aicoords[1], aicoords[2], aicoords[3], currentTurn);
 			gameBoard.display();
 
 			if (gameBoard.checkOver()) {
