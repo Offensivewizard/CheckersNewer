@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class AI {
@@ -7,17 +8,24 @@ public class AI {
 		
 	}
 	
-	public int[] getAIMove() {
+	public int[] getAIMove(Board gameBoard, boolean cTurn) {
 		
 		int[] coords = new int[4];
 		Random rand = new Random();
-
-		int r = rand.nextInt(8) + 0;
 		
 		for(int i = 0; i<4; i++){
-			coords[i] = r;
+			coords[i] = rand.nextInt(8);
 		}
 		
+		while (!gameBoard.validateMove(coords[0],coords[1],coords[2],coords[3],cTurn)) {
+			
+			for(int i = 0; i<4; i++){
+				coords[i] = rand.nextInt(8);
+			}
+			
+
+			
+		}
 		
 
 		return coords;
@@ -27,13 +35,3 @@ public class AI {
 	}
 }
 
-/*while (!gameBoard.validateMove(coord[0], coord[1], coord[2], coord[3], currentTurn)) {
-gameBoard.display();
-System.out.println("Invalid coordinates, try again. Input your coordinates in order:");
-coord[0] = in.nextInt();
-coord[1] = in.nextInt();
-coord[2] = in.nextInt();
-coord[3] = in.nextInt();
-
-}
-*/
