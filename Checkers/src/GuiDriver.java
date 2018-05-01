@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.ToggleButton;
 
@@ -38,6 +39,7 @@ public class GuiDriver extends Application {
 
 		GridPane gridpane = new GridPane();
 		VBox vbox = new VBox();
+		Text text = new Text();
 
 		for (int row = 0; row < 8; row++) {
 			for (int col = 0; col < 8; col++) {
