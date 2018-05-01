@@ -337,7 +337,7 @@ public class Board {
 
 								}
 
-								else if (x2 > x1) {
+								else if (x2 < x1) {
 
 									if (board[y1 - 1][x1 - 1].getColour().equals(Colour.RED)) {
 
