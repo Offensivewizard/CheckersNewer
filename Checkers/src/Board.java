@@ -244,7 +244,7 @@ public class Board {
 							// would
 							// be for a jump, and so
 							// the validity of the jump needs to be found.
-							else if (Math.abs(y2 - y1) == 2) {
+							else if (Math.abs(y2 - y1) == 2 && Math.abs(x1-x2) == 2) {
 								// If the piece is moving to the right.
 								if (x1 < x2) {
 
@@ -283,7 +283,7 @@ public class Board {
 
 							}
 
-							else if (Math.abs(y2 - y1) == 2) {
+							else if (Math.abs(y2 - y1) == 2 && Math.abs(x2-x1) == 2) {
 
 								if (x2 > x1) {
 
@@ -325,7 +325,7 @@ public class Board {
 
 								return true;
 
-							} else if (Math.abs(y2 - y1) == 2) {
+							} else if (Math.abs(y2 - y1) == 2 && Math.abs(x2-x1) == 2) {
 
 								if (x1 < x2) {
 
@@ -359,7 +359,7 @@ public class Board {
 
 							}
 
-							else if (Math.abs(y2 - y1) == 2) {
+							else if (Math.abs(y2 - y1) == 2 && Math.abs(x2-x1) == 2) {
 
 								if (x2 > x1) {
 
