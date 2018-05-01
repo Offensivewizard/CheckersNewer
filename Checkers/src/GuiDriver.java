@@ -22,7 +22,7 @@ public class GuiDriver extends Application {
 	private int numClicks = 0;
 	private boolean currentTurn = false;
 	private AI ai = new AI();
-	private boolean aiTrue = true;
+	private boolean aiTrue = false;
 
 	public static void main(String[] args) {
 
@@ -72,11 +72,11 @@ public class GuiDriver extends Application {
 									numClicks = 0;
 
 									if (currentTurn == true) {
-
+										System.out.println("It is now black's turn.");
 										currentTurn = false;
 
 									} else {
-
+										System.out.println("It is now red's turn.");
 										currentTurn = true;
 
 									}
