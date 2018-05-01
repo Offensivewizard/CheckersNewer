@@ -2,10 +2,12 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.ToggleButton;
@@ -39,6 +41,7 @@ public class GuiDriver extends Application {
 
 		GridPane gridpane = new GridPane();
 		VBox vbox = new VBox();
+		vbox.setAlignment(Pos.CENTER);
 		Text text = new Text();
 
 		for (int row = 0; row < 8; row++) {
@@ -84,6 +87,16 @@ public class GuiDriver extends Application {
 										gameBoard.movePiece(aicoords[0], aicoords[1], aicoords[2], aicoords[3], currentTurn);
 										currentTurn = false;
 										updateBoard();
+										
+									}
+									
+									if (gameBoard.checkOver()) {
+										
+										text.setText(gameBoard.checkWinner() + " is the winner.");
+										text.setFont(new Font(20));
+										vbox.getChildren().add(text);
+										Scene end = new Scene(vbox,500,500);
+										window.setScene(end);
 										
 									}
 
