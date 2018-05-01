@@ -22,7 +22,7 @@ public class GuiDriver extends Application {
 	private int numClicks = 0;
 	private boolean currentTurn = false;
 	private AI ai = new AI();
-	private boolean aiTrue = false;
+	private boolean aiTrue = true;
 
 	public static void main(String[] args) {
 
@@ -81,11 +81,12 @@ public class GuiDriver extends Application {
 
 									}
 									
-									if (aiTrue == true) {
+									if (aiTrue == true && gameBoard.checkOver() == false) {
 										
 										int[] aicoords = ai.getAIMove(gameBoard, currentTurn);
 										gameBoard.movePiece(aicoords[0], aicoords[1], aicoords[2], aicoords[3], currentTurn);
 										currentTurn = false;
+										System.out.println("It is now black's turn.");
 										updateBoard();
 										
 									}
