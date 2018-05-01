@@ -43,6 +43,17 @@ public class GuiDriver extends Application {
 		VBox vbox = new VBox();
 		vbox.setAlignment(Pos.CENTER);
 		Text text = new Text();
+		Text text2 =new Text();
+		text2.setText("You've determined that the game ended in a stalemate");
+		text2.setFont(new Font(20));
+		vbox.getChildren().add(text2);
+		
+		Button stalemate = new Button();
+		stalemate.setText("Press if stalemate");
+		stalemate.setAlignment(Pos.BASELINE_LEFT);
+		vbox.getChildren().add(stalemate);
+		Scene end2 = new Scene (vbox, 500 ,500);
+		stalemate.setOnAction(e->window.setScene(end2));
 
 		for (int row = 0; row < 8; row++) {
 			for (int col = 0; col < 8; col++) {
