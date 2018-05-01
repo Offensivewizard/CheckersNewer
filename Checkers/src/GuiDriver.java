@@ -11,12 +11,23 @@ import javafx.scene.control.ToggleButton;
 public class GuiDriver extends Application {
 	private static final double BUTTON_WIDTH = 80;
 	private static final double BUTTON_HEIGHT = 80;
-	private static coordButton[][] buttons = new coordButton[8][8];
+	private coordButton[][] buttons = new coordButton[8][8];
+	private Board gameBoard = new Board();
+	private int[] startcoords = new int[2];
+	private int[] endcoords = new int[2];
+	private int numClicks = 0;
+	private boolean currentTurn = false;
 
 	public static void main(String[] args) {
 
 		launch(args);
 
+	}
+	
+	private void updateBoard() {
+		
+		gameBoard.upBoard(buttons);
+		
 	}
 
 	@Override
@@ -32,8 +43,47 @@ public class GuiDriver extends Application {
 				buttons[row][col].setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
-						System.out.println(((coordButton) event.getSource()).getRow());
-						System.out.println(((coordButton) event.getSource()).getCol());
+						
+						if (numClicks == 0) {
+							
+							startcoords[0] = (int) ((coordButton) event.getSource()).getRow();
+							startcoords[1] = (int) ((coordButton) event.getSource()).getCol();
+							numClicks++;
+						}
+						else if (numClicks == 1) {
+							
+							endcoords[0] = (int) ((coordButton) event.getSource()).getRow();
+							endcoords[1] = (int) ((coordButton) event.getSource()).getCol();
+							
+							if (gameBoard.validateMove(startcoords[0],startcoords[1],endcoords[0],endcoords[1],currentTurn)) {
+								
+								gameBoard.movePiece(startcoords[0],startcoords[1],endcoords[0],endcoords[1],currentTurn);
+								updateBoard();
+								numClicks = 0;
+								
+								if (currentTurn == true) {
+									
+									currentTurn = false;
+									
+								}
+								else {
+									
+									currentTurn = true;
+									
+								}
+								
+								
+							}
+							else {
+								
+								numClicks = 0;
+								System.out.println("Invalid move. Try again.");
+								
+							}
+							
+						}
+						
+						
 					}
 				});
 
@@ -91,5 +141,7 @@ public class GuiDriver extends Application {
 		window.setScene(scene);
 		window.show();
 	}
+	
+	
 
 }

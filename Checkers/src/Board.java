@@ -76,6 +76,34 @@ public class Board {
 		System.out.println("---------------");
 
 	}
+	
+	public void upBoard(coordButton[][] buttons) {
+		
+		for (int i = 0 ; i < 8 ; i++) {
+			
+			for (int t = 0 ; t < 8 ; t++) {
+				
+				if (board[i][t].getColour().equals(Colour.EMPTY)) {
+					
+					buttons[i][t].setStyle("-fx-base: #e5e5e5;");
+					
+				}
+				if (board[i][t].getColour().equals(Colour.BLACK)) {
+					
+					buttons[i][t].setStyle("-fx-base: #000000;");
+					
+				}
+				if (board[i][t].getColour().equals(Colour.RED)) {
+					
+					buttons[i][t].setStyle("-fx-base: #c90808;");
+					
+				}
+				
+			}
+			
+		}
+		
+	}
 
 	public void movePiece(int y1, int x1, int y2, int x2, boolean currentTurn) {
 

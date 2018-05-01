@@ -44,7 +44,7 @@ public class Driver {
 			currentTurn = true;
 			gameBoard.display();
 			System.out.println("Red checkers, it's your turn! Input your coordinates in order:");
-			int aicoords[] = ai.getAIMove();
+			int aicoords[] = ai.getAIMove(gameBoard, currentTurn);
 
 
 			gameBoard.movePiece(aicoords[0], aicoords[1], aicoords[2], aicoords[3], currentTurn);
