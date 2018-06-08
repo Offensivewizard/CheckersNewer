@@ -94,6 +94,7 @@ class NewStage {
 											currentTurn = true;
 
 										}
+										
 
 										if (aiTrue == true && gameBoard.checkOver() == false) {
 
@@ -106,7 +107,6 @@ class NewStage {
 
 										}
 										
-
 										if (gameBoard.checkOver()) {
 											
 											Button playagain = new Button ("Play Again with CPU");
@@ -185,6 +185,7 @@ class NewStage {
 				for (int i = 1; i < 8; i += 2) {
 					buttons[6][i].setStyle("-fx-base: #c90808;");
 				}
+				
 				Scene scene = new Scene(gridpane, 500, 500);
 				window.setTitle("Checkers");
 				window.setScene(scene);
